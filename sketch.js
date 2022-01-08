@@ -94,8 +94,9 @@ function mouseClicked() {
 function drawLabel(){
   fill('white');
 
-  textSize(32);
+  textSize(20);
   text('haha sprongle🥺', 10, 30);
+  text('click for another s̴̡̞͍̻͔̥͇̳̞̼̞̱͍͛̓̏̈́̽͐̔͊̉͗͐͝ͅp̸͍̺̟̮̗̤̀̀̎͒̌̋̀̓̾͊̓̆͝͝͝ř̶̨̨̛̹̠͉͈̙̳̼̦̳̬̤̼͌̓̂͆͂ͅo̵̮̹̹̰̞̅̓͌̇͆̑n̶͎̗̭̖̎̀͑͒̅̔́̾͒̀͜g̵̮̼̟̼̲̝̘̻̻̳͓̱̯̠͊̾͜͠ļ̶̢̡̞͉͎̟̬̦̞͚̘͆̍e̶̠̯̺̰̅̾̏̋̾̆̽̌̇̽', 10, height- 60);
 }
 
 function generateHarm(){ //generate all the points in the harmograph
