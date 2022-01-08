@@ -95,7 +95,13 @@ function drawLabel(){
   fill('white');
 
   textSize(20);
-  text('haha sprongle🥺', 10, 30);
+  if(stroke_type == 5){
+    text('haha gay sprongle🥺', 10, 30);
+  }
+  else{
+    text('haha sprongle', 10, 30);
+  }
+  
   text('click for another s̴̡̞͍̻͔̥͇̳̞̼̞̱͍͛̓̏̈́̽͐̔͊̉͗͐͝ͅp̸͍̺̟̮̗̤̀̀̎͒̌̋̀̓̾͊̓̆͝͝͝ř̶̨̨̛̹̠͉͈̙̳̼̦̳̬̤̼͌̓̂͆͂ͅo̵̮̹̹̰̞̅̓͌̇͆̑n̶͎̗̭̖̎̀͑͒̅̔́̾͒̀͜g̵̮̼̟̼̲̝̘̻̻̳͓̱̯̠͊̾͜͠ļ̶̢̡̞͉͎̟̬̦̞͚̘͆̍e̶̠̯̺̰̅̾̏̋̾̆̽̌̇̽', 10, height- 60);
 }
 
