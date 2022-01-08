@@ -64,6 +64,7 @@ function setup() {
 
 
 function draw() {
+  clear()
   background(0);
 
   //generateParameters();
