@@ -6,6 +6,8 @@ let d_mul;
 let p_mul;
 let f_mul;
 
+let harmType;
+
 
 
 //empty arrays for the generated parameters
@@ -45,7 +47,7 @@ let meta_i = 0;
 
 function setup() {
 
-  d_mul = 0.05; //premultiplier for decay type vars
+  d_mul = 0.005; //premultiplier for decay type vars
   p_mul = PI; //premultiplier for angle-like vars  
   f_mul = 1; //premultiplier for frequency-like vars
 
@@ -112,7 +114,13 @@ function generateHarm(){ //generate all the points in the harmograph
     pts[i] = [];
     for(let dim = 0; dim<3; dim++){
       let t = t_offset + i*t_max/i_max;
-      pts[i][dim] = harmFunc(t,d[dim+3],f[dim+3],p[dim+3])+harmFunc(t,d[dim],f[dim],p[dim]);
+      if(harmType){ //multiply two harms
+        pts[i][dim] = 2*harmFunc(t,d[dim+3],f[dim+3],p[dim+3])*harmFunc(t,d[dim],f[dim],p[dim]);
+      }
+      else{//add two harms
+        pts[i][dim] = harmFunc(t,d[dim+3],f[dim+3],p[dim+3])+harmFunc(t,d[dim],f[dim],p[dim]);
+      }
+      
     }
 
   }
@@ -200,6 +208,7 @@ function generateParameters() { //generate a new set of 6x3 random parameters
   t_offset = 0;
   colPeriod = 10+random(100); //colour period for rainbow etc
   show_end_dots = int(random(2));
+  harmType = int(random(2));
 }
 
 function harmFunc(tt,dd,ff,pp){// generic single decaying harmonic function
