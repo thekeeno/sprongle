@@ -45,7 +45,7 @@ let meta_i = 0;
 
 function setup() {
 
-  d_mul = 0.01; //premultiplier for decay type vars
+  d_mul = 0.05; //premultiplier for decay type vars
   p_mul = PI; //premultiplier for angle-like vars  
   f_mul = 1; //premultiplier for frequency-like vars
 
