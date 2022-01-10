@@ -6,7 +6,7 @@ let d_mul;
 let p_mul;
 let f_mul;
 
-let harmType;
+let harmType = [];
 
 
 
@@ -118,7 +118,7 @@ function generateHarm(){ //generate all the points in the harmograph
     pts[i] = [];
     for(let dim = 0; dim<3; dim++){
       let t = t_offset + i*t_max/i_max;
-      if(harmType){ //multiply two harms
+      if(harmType[dim]){ //multiply two harms
         pts[i][dim] = 2*harmFunc(t,d[dim+3],f[dim+3],p[dim+3])*harmFunc(t,d[dim],f[dim],p[dim]);
       }
       else{//add two harms
@@ -228,7 +228,8 @@ function generateParameters() {
   t_offset = 0;
   colPeriod = 100+random(100); //colour period for rainbow etc
   show_end_dots = int(random(2)); //boolean switch to decide wither we draw small dots at the ends of the sprongle
-  harmType = int(random(2)); //boolean switch to decide whether the two harmonics are multiplied or summed
+  harmType = [int(random(2)),int(random(2)),int(random(2))]; //boolean switch to decide whether the two X harmonics are multiplied or summed
+
   //rotateEnable = int(random(2));
   rotateEnable = 0;
   rotateSpeed = 0.001*PI*random();
