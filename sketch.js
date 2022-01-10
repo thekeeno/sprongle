@@ -39,6 +39,9 @@ let fps = 60;
 let show_end_dots;
 
 let colPeriod;
+let rotateEnable;
+let rotateSpeed;
+let rotateAngle;
 
 // meta parameters
 
@@ -86,6 +89,7 @@ function draw() {
   f[1] -=0.0002;
   t_offset += 0.02
   meta_i++;
+  rotateAngle += rotateSpeed;
 
 }
 
@@ -137,8 +141,17 @@ function drawHarm(data, mono_colour){ //draws the stuff you give it
   let y2;
   let z1;
   let z2;
+  push();
+    
+  if (rotateEnable){
+    translate(width/2, height/2);
+    rotate(rotateAngle);
+    scale(0.707);
+    translate(-width/2, -height/2);
+  }
+  fill('white');
   for(let i = 0; i<(data.length -1);i++){
-    fill('white');
+    
     //x1 = data[i][0];
     //y1 = data[i][1];
     //z1 = data[i][2];
@@ -146,6 +159,7 @@ function drawHarm(data, mono_colour){ //draws the stuff you give it
     //y2 = data[i+1][1];
     //z2 = data[i+1][2];
     //stroke_type = 5;
+
     switch(stroke_type){
       case 0: //white to grey
         stroke(100+200*data[i][2]);
@@ -191,7 +205,10 @@ function drawHarm(data, mono_colour){ //draws the stuff you give it
     scaledDot(data[data.length-1][0],data[data.length-1][1],7);
     
   }
-    stroke(mono_colour);
+
+  
+  stroke(mono_colour);
+  pop();
   
   
 
@@ -212,6 +229,10 @@ function generateParameters() {
   colPeriod = 100+random(100); //colour period for rainbow etc
   show_end_dots = int(random(2)); //boolean switch to decide wither we draw small dots at the ends of the sprongle
   harmType = int(random(2)); //boolean switch to decide whether the two harmonics are multiplied or summed
+  //rotateEnable = int(random(2));
+  rotateEnable = 0;
+  rotateSpeed = 0.001*PI*random();
+  rotateAngle = 0;
 }
 
 /**
