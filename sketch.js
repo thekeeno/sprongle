@@ -84,7 +84,7 @@ function draw() {
   s += s_step;
   f[0] +=0.0001;
   f[1] -=0.0002;
-  t_offset += 0.05
+  t_offset += 0.02
   meta_i++;
 
 }
@@ -201,12 +201,12 @@ function generateParameters() { //generate a new set of 6x3 random parameters
   for(let i = 0; i <6; i++){
     d[i] = d_mul*random()
     p[i] = p_mul*random()
-    f[i] = f_mul*(random([2,3]) + 0.1*random());
+    f[i] = f_mul*(random([2,3,4]) + 0.05*random());
   }
 
   stroke_type = int(random(6));
   t_offset = 0;
-  colPeriod = 10+random(100); //colour period for rainbow etc
+  colPeriod = 100+random(100); //colour period for rainbow etc
   show_end_dots = int(random(2));
   harmType = int(random(2));
 }
