@@ -204,7 +204,7 @@ function generateParameters() {
   for(let i = 0; i <6; i++){ //decay, phase and frequency paramaters for six harmonics (2 per dimension)
     d[i] = d_mul*random()
     p[i] = p_mul*random()
-    f[i] = f_mul*(random([2,3,4]) + 0.05*random()); //frequency prefers integer values plus a small random term, which gives prettier graphs
+    f[i] = f_mul*(random([0.75,1,2,3,4]) + 0.05*random()); //frequency prefers integer values plus a small random term, which gives prettier graphs
   }
 
   stroke_type = int(random(6)); //integer selector between the various line styles
