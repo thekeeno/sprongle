@@ -56,7 +56,7 @@ function setup() {
   s_init = 0.95;
   s = s_init;
   t_max = 40;
-  i_max = 1000;
+  i_max = 1000; //number of points in a single harmonograph. increase this to improve resolution but decrease performance
   generateParameters();
   frameRate(fps);
   createCanvas(700,700);
@@ -176,7 +176,8 @@ function drawHarm(data, mono_colour){ //draws the stuff you give it
       
 
     }
-    line(rescaleX(data[i][0]),rescaleY(data[i][1]),rescaleX(data[i+1][0]),rescaleY(data[i+1][1]));
+    
+    scaledLine2D(data[i][0],data[i][1],data[i+1][0],data[i+1][1])
 
     
     
@@ -185,8 +186,10 @@ function drawHarm(data, mono_colour){ //draws the stuff you give it
 
   }
   if (show_end_dots){
-    ellipse(rescaleX(data[0][0]), rescaleY(data[0][1]), 7);
-    ellipse(rescaleX(data[data.length-1][0]), rescaleY(data[data.length-1][1]), 7);
+    scaledDot(data[0][0],data[0][1],7);
+    
+    scaledDot(data[data.length-1][0],data[data.length-1][1],7);
+    
   }
     stroke(mono_colour);
   
@@ -197,14 +200,14 @@ function drawHarm(data, mono_colour){ //draws the stuff you give it
 
 
 
-function generateParameters() { //generate a new set of 6x3 random parameters
-  for(let i = 0; i <6; i++){
+function generateParameters() { 
+  for(let i = 0; i <6; i++){ //decay, phase and frequency paramaters for six harmonics (2 per dimension)
     d[i] = d_mul*random()
     p[i] = p_mul*random()
-    f[i] = f_mul*(random([2,3,4]) + 0.05*random());
+    f[i] = f_mul*(random([2,3,4]) + 0.05*random()); //frequency prefers integer values plus a small random term, which gives prettier graphs
   }
 
-  stroke_type = int(random(6));
+  stroke_type = int(random(6)); //integer selector between the various line styles
   t_offset = 0;
   colPeriod = 100+random(100); //colour period for rainbow etc
   show_end_dots = int(random(2)); //boolean switch to decide wither we draw small dots at the ends of the sprongle
@@ -268,4 +271,14 @@ function hslToRgb(h, s, l){
     }
 
     return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+
+
+function scaledDot(x,y,d){
+  ellipse(rescaleX(x),rescaleY(y),d,d);
+}
+
+function scaledLine2D(x1,y1,x2,y2){
+  line(rescaleX(x1),rescaleY(y1),rescaleX(x2),rescaleY(y2));
 }
