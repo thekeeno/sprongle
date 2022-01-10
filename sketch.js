@@ -207,12 +207,21 @@ function generateParameters() { //generate a new set of 6x3 random parameters
   stroke_type = int(random(6));
   t_offset = 0;
   colPeriod = 100+random(100); //colour period for rainbow etc
-  show_end_dots = int(random(2));
-  harmType = int(random(2));
+  show_end_dots = int(random(2)); //boolean switch to decide wither we draw small dots at the ends of the sprongle
+  harmType = int(random(2)); //boolean switch to decide whether the two harmonics are multiplied or summed
 }
 
-function harmFunc(tt,dd,ff,pp){// generic single decaying harmonic function
-  return exp(-dd*tt)*sin(tt*ff+pp);
+/**
+ * Generic single decaying harmonic function
+ *
+ * @param   {number}  tt       The time
+ * @param   {number}  dd       The decay rate
+ * @param   {number}  ff       The angular frequency (radians per time)
+ * @param   {number}  pp       The phase offset (radians)
+ * @return  {number}           The harmonic function result
+ */
+function harmFunc(tt,dd,ff,pp){// 
+  return exp(-dd*tt)*sin(tt*ff+pp); 
 }
 
 function rescaleX(x){
